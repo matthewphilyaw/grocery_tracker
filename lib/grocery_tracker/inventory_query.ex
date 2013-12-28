@@ -12,8 +12,8 @@ defmodule GroceryTracker.InventoryQuery do
     GroceryTracker.InventoryRepo.all(query)
   end
 
-  def add(Name, Barcode) do
-    item = GroceryTracker.InventoryItem.new(name: Name, barcode: Barcode)
+  def add(name, barcode) do
+    item = GroceryTracker.InventoryItem.new(name: name, barcode: barcode)
     GroceryTracker.InventoryRepo.create(item)
   end
 end

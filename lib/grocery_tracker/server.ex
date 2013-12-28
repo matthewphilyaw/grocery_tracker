@@ -9,7 +9,12 @@ defmodule GroceryTracker.Server do
     {:ok, nil}
   end
 
-  def handle_call(:get_all, _from, nil) do
+  def handle_call(:get_all, _from, _state) do
     {:reply, {:items, GroceryTracker.InventoryQuery.all}, nil}
+  end
+
+  def handle_cast({:add, {name, barcode}} , _state) do
+    GroceryTracker.InventoryQuery.add(name, barcode)
+    {:noreply, nil}
   end
 end
